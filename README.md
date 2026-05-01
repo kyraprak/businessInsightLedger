@@ -38,15 +38,16 @@ Useful for behavioral and habit analysis
 
 🛠️ How to Run
 
-Open the project in IntelliJ IDEA (or any Java IDE)
+Prerequisites
+Java 17 or higher
+Maven (or any Java IDE such as IntelliJ IDEA)
 
-Locate and run:
-
-Main.java
-
-Ensure the following file exists in the root directory:
-
-transactions.csv
+Steps
+1. Clone this repository:
+https://github.com/kyraprak/businessInsightLedger
+2 Open the project in IntelliJ IDEA
+3. Run Main.java
+4. Use the menu to navigate through the application
 
 📂 Data Format
 
@@ -55,6 +56,47 @@ Transactions are stored in a pipe-delimited format:
 date | time | description | vendor | amount | category | mood | context
 Example:
 2026-04-20|14:32|Company Lunch|Chipotle|-82.10|Food|Nourishing|Team outing
+
+📂 Project Structure
+businessInsightLedger/
+│
+├── .idea/                     # IntelliJ project settings 
+├── .mvn/                      # Maven wrapper files
+│
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/ledger/
+│   │   │
+│   │   │       ├── model/
+│   │   │       │   ├── Transaction.java
+│   │   │       │   └── TransactionType.java
+│   │   │
+│   │   │       ├── repository/
+│   │   │       │   └── TransactionRepository.java
+│   │   │
+│   │   │       ├── service/
+│   │   │       │   ├── LedgerService.java
+│   │   │       │   ├── PatternService.java
+│   │   │       │   └── ReportService.java
+│   │   │
+│   │   │       ├── ui/
+│   │   │       │   └── ConsoleUI.java
+│   │   │
+│   │   │       ├── FileUtil.java
+│   │   │       ├── Main.java
+│   │   │       └── MenuHandler.java
+│   │
+│   │   └── resources/
+│   │
+│   └── test/                  # Unit tests
+│
+├── target/                    # Compiled files (ignored in Git)
+├── pom.xml                    # Maven configuration
+├── transactions.csv           # Data storage file
+└── README.md                  # Project documentation
+
+The project follows a clean architecture approach, separating core business logic (domain, service) from infrastructure concerns (persistence, cli). This makes the application easier to test, extend, and maintain.
 
 🧩 Architecture Highlights
 
